@@ -1,103 +1,229 @@
-import Image from "next/image";
+"use client";
+
+import { PageLayout } from "@/components/layouts";
+import { Header } from "@/components/common/header";
+import { Footer } from "@/components/common/footer";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Layout, Palette, Layers } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <PageLayout
+      template="contained"
+      header={<Header />}
+      footer={<Footer />}
+      maxWidth="2xl"
+    >
+      <div className="space-y-8">
+        {/* Hero Section */}
+        <div className="text-center space-y-4">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Multiple Layout Templates
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Experience different layout templates for your Next.js blog. Choose
+            between minimal blank layouts or feature-rich contained layouts with
+            headers, footers, and sidebars.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {/* Layout Templates Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Card className="group hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Layout className="h-5 w-5 text-blue-500" />
+                Blank Template
+              </CardTitle>
+              <CardDescription>
+                Clean slate for complete creative freedom
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <h4 className="font-semibold">Features:</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Full-screen layout</li>
+                  <li>• No header/footer constraints</li>
+                  <li>• Perfect for landing pages</li>
+                  <li>• Custom design freedom</li>
+                </ul>
+              </div>
+
+              <Link href="/blank-demo">
+                <Button className="w-full group-hover:bg-blue-600 transition-colors">
+                  View Blank Template
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+
+          <Card className="group hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Layers className="h-5 w-5 text-purple-500" />
+                Contained Template
+              </CardTitle>
+              <CardDescription>
+                Structured layout with navigation and content areas
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <h4 className="font-semibold">Features:</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Header navigation</li>
+                  <li>• Optional sidebar</li>
+                  <li>• Footer content</li>
+                  <li>• Responsive design</li>
+                </ul>
+              </div>
+
+              <Link href="/contained-demo">
+                <Button className="w-full group-hover:bg-purple-600 transition-colors">
+                  View Contained Template
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+
+          <Card className="group hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Palette className="h-5 w-5 text-indigo-500" />
+                Floating UI
+              </CardTitle>
+              <CardDescription>
+                Advanced tooltips, popovers, and dropdowns
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <h4 className="font-semibold">Features:</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Smart positioning</li>
+                  <li>• Collision detection</li>
+                  <li>• Keyboard navigation</li>
+                  <li>• Rich interactions</li>
+                </ul>
+              </div>
+
+              <Link href="/floating-ui-demo">
+                <Button className="w-full group-hover:bg-indigo-600 transition-colors">
+                  View Floating UI Demo
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+
+          <Card className="group hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Layers className="h-5 w-5 text-emerald-500" />
+                Landing Page
+              </CardTitle>
+              <CardDescription>
+                Animated landing page with floating elements
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <h4 className="font-semibold">Features:</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Floating animations</li>
+                  <li>• Interactive tooltips</li>
+                  <li>• Smooth transitions</li>
+                  <li>• Modern design</li>
+                </ul>
+              </div>
+
+              <Link href="/landing">
+                <Button className="w-full group-hover:bg-emerald-600 transition-colors">
+                  View Landing Demo
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Implementation Example */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Palette className="h-5 w-5 text-green-500" />
+              How to Use
+            </CardTitle>
+            <CardDescription>
+              Simple implementation for any page
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="bg-muted p-4 rounded-lg">
+              <h4 className="font-semibold mb-2">Blank Template Usage:</h4>
+              <pre className="text-sm text-muted-foreground overflow-x-auto">
+                {`<PageLayout template="blank">
+  <YourCustomContent />
+</PageLayout>`}
+              </pre>
+            </div>
+
+            <div className="bg-muted p-4 rounded-lg">
+              <h4 className="font-semibold mb-2">Contained Template Usage:</h4>
+              <pre className="text-sm text-muted-foreground overflow-x-auto">
+                {`<PageLayout
+  template="contained"
+  header={<Header />}
+  footer={<Footer />}
+  sidebar={<Sidebar />}
+  maxWidth="2xl"
+>
+  <YourPageContent />
+</PageLayout>`}
+              </pre>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Tech Stack */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Built With</CardTitle>
+            <CardDescription>
+              Modern technologies for optimal performance
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+              <div className="p-3 bg-muted/50 rounded-lg">
+                <div className="font-semibold">Next.js 15</div>
+                <div className="text-xs text-muted-foreground">
+                  React Framework
+                </div>
+              </div>
+              <div className="p-3 bg-muted/50 rounded-lg">
+                <div className="font-semibold">Radix UI</div>
+                <div className="text-xs text-muted-foreground">Components</div>
+              </div>
+              <div className="p-3 bg-muted/50 rounded-lg">
+                <div className="font-semibold">Tailwind CSS</div>
+                <div className="text-xs text-muted-foreground">Styling</div>
+              </div>
+              <div className="p-3 bg-muted/50 rounded-lg">
+                <div className="font-semibold">TypeScript</div>
+                <div className="text-xs text-muted-foreground">Type Safety</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </PageLayout>
   );
 }
