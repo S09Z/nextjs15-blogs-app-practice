@@ -11,6 +11,9 @@ export const routing = defineRouting({
   // The prefix for all pathnames
   pathnames: {
     "/": "/",
+    "/blog": "/blog",
+    "/blog/[slug]": "/blog/[slug]",
+    "/blog/tags/[tag]": "/blog/tags/[tag]",
     "/landing": "/landing",
     "/contained-demo": "/contained-demo",
     "/blank-demo": "/blank-demo",
