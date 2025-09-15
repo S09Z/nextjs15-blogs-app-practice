@@ -1,0 +1,215 @@
+{
+  "Common": {
+    "home": "Home",
+    "landing": "Landing",
+    "layouts": "Layouts",
+    "floatingUI": "Floating UI",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More",
+    "viewDemo": "View Demo",
+    "backToHome": "Back to Home",
+    "builtWith": "Built with ❤️ using Next.js, Floating UI, and Tailwind CSS"
+  },
+  "Homepage": {
+    "title": "Multiple Layout Templates",
+    "subtitle": "Experience different layout templates for your Next.js blog. Choose between minimal blank layouts or feature-rich contained layouts with headers, footers, and sidebars.",
+    "blankTemplate": {
+      "title": "Blank Template",
+      "description": "Clean slate for complete creative freedom",
+      "features": {
+        "fullScreen": "Full-screen layout",
+        "noConstraints": "No header/footer constraints",
+        "landingPages": "Perfect for landing pages",
+        "customDesign": "Custom design freedom"
+      },
+      "button": "View Blank Template"
+    },
+    "containedTemplate": {
+      "title": "Contained Template",
+      "description": "Structured layout with navigation and content areas",
+      "features": {
+        "headerNav": "Header navigation",
+        "optionalSidebar": "Optional sidebar",
+        "footerContent": "Footer content",
+        "responsiveDesign": "Responsive design"
+      },
+      "button": "View Contained Template"
+    },
+    "floatingUI": {
+      "title": "Floating UI",
+      "description": "Advanced tooltips, popovers, and dropdowns",
+      "features": {
+        "smartPositioning": "Smart positioning",
+        "collisionDetection": "Collision detection",
+        "keyboardNav": "Keyboard navigation",
+        "richInteractions": "Rich interactions"
+      },
+      "button": "View Floating UI Demo"
+    },
+    "landingPage": {
+      "title": "Landing Page",
+      "description": "Animated landing page with floating elements",
+      "features": {
+        "floatingAnimations": "Floating animations",
+        "interactiveTooltips": "Interactive tooltips",
+        "smoothTransitions": "Smooth transitions",
+        "modernDesign": "Modern design"
+      },
+      "button": "View Landing Demo"
+    },
+    "howToUse": {
+      "title": "How to Use",
+      "description": "Simple implementation for any page",
+      "blankUsage": "Blank Template Usage:",
+      "containedUsage": "Contained Template Usage:"
+    },
+    "builtWith": {
+      "title": "Built With",
+      "description": "Modern technologies for optimal performance"
+    }
+  },
+  "Landing": {
+    "hero": {
+      "title": "Build Amazing Experiences",
+      "subtitle": "Create stunning web applications with modern tools, beautiful animations, and seamless user interactions that your users will love.",
+      "getStartedTooltip": "Start building something amazing today!",
+      "watchDemo": "Watch Demo",
+      "watchDemoContent": {
+        "title": "Watch Demo Video",
+        "description": "See how easy it is to create beautiful animations and interactions",
+        "downloadAssets": "Download Assets"
+      },
+      "stats": {
+        "happyUsers": "Happy Users",
+        "fiveStarReviews": "5-Star Reviews",
+        "lightningFast": "Lightning Fast",
+        "scrollToExplore": "Scroll to explore more"
+      }
+    },
+    "features": {
+      "title": "Powerful Features",
+      "subtitle": "Everything you need to build modern, scalable applications with exceptional user experiences",
+      "beautiful": {
+        "title": "Beautiful Design",
+        "description": "Stunning UI components with modern design principles",
+        "details": "Our design system follows the latest trends with carefully crafted components that look great on any device."
+      },
+      "fast": {
+        "title": "Lightning Fast",
+        "description": "Optimized performance for the best user experience",
+        "details": "Built with performance in mind, featuring lazy loading, code splitting, and optimal bundle sizes."
+      },
+      "secure": {
+        "title": "Secure & Reliable",
+        "description": "Enterprise-grade security with 99.9% uptime",
+        "details": "Advanced security measures including encryption, secure authentication, and regular security audits."
+      },
+      "mobile": {
+        "title": "Mobile First",
+        "description": "Responsive design that works on all devices",
+        "details": "Mobile-first approach ensures your application looks and works perfectly on any screen size."
+      },
+      "developer": {
+        "title": "Developer Friendly",
+        "description": "Clean code with excellent documentation",
+        "details": "Well-structured codebase with comprehensive documentation, examples, and TypeScript support."
+      },
+      "animations": {
+        "title": "Rich Animations",
+        "description": "Smooth animations that delight users",
+        "details": "Carefully crafted animations using modern web standards for smooth, performant user interactions."
+      },
+      "exploreFeature": "Explore feature"
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "subtitle": "Join thousands of developers who are already building amazing experiences with our platform.",
+      "startBuilding": "Start Building Now",
+      "viewDocs": "View Documentation"
+    }
+  },
+  "FloatingUI": {
+    "title": "Floating UI Integration",
+    "subtitle": "Powerful tooltips, popovers, and dropdowns using Floating UI with Next.js",
+    "tooltips": {
+      "title": "Tooltip Components",
+      "description": "Hover over elements to see intelligent tooltips with auto-positioning",
+      "topTooltip": "Top Tooltip",
+      "rightTooltip": "Right Tooltip",
+      "bottomTooltip": "Bottom Tooltip",
+      "leftTooltip": "Left Tooltip",
+      "richContent": "Rich Content Tooltip",
+      "topContent": "This tooltip appears on top",
+      "rightContent": "This tooltip appears on the right side",
+      "bottomContent": "This tooltip appears on the bottom",
+      "leftContent": "This tooltip appears on the left side",
+      "richTooltip": {
+        "title": "Rich Content Tooltip",
+        "description": "This tooltip contains multiple elements and rich formatting."
+      }
+    },
+    "popovers": {
+      "title": "Popover Components",
+      "description": "Click to open interactive popover panels with custom content",
+      "account": "Account",
+      "quickActions": "Quick Actions",
+      "subscribe": "Subscribe",
+      "accountSettings": {
+        "title": "Account Settings",
+        "description": "Manage your account preferences and security settings.",
+        "editProfile": "Edit Profile",
+        "changePassword": "Change Password"
+      },
+      "quickActionsContent": {
+        "title": "Quick Actions",
+        "edit": "Edit",
+        "save": "Save",
+        "star": "Star",
+        "like": "Like"
+      },
+      "newsletter": {
+        "title": "Newsletter Signup",
+        "description": "Get the latest updates delivered to your inbox.",
+        "placeholder": "Enter your email",
+        "subscribe": "Subscribe"
+      }
+    },
+    "dropdowns": {
+      "title": "Dropdown Components",
+      "description": "Feature-rich dropdown menus with keyboard navigation and icons",
+      "userMenu": "User Menu",
+      "fileOptions": "File Options",
+      "editMenu": "Edit Menu",
+      "keyboardNav": {
+        "title": "Keyboard Navigation:",
+        "arrows": "Use arrow keys to navigate menu items",
+        "enter": "Press Enter or Space to select an item",
+        "escape": "Press Escape to close the dropdown",
+        "type": "Type to search and highlight matching items"
+      }
+    },
+    "features": {
+      "title": "Floating UI Features",
+      "description": "Advanced positioning and interaction capabilities",
+      "positioning": {
+        "title": "Positioning Features:",
+        "collision": "Automatic collision detection",
+        "flipping": "Smart placement flipping",
+        "boundary": "Boundary-aware positioning",
+        "arrow": "Arrow pointer alignment",
+        "viewport": "Viewport constraint handling"
+      },
+      "interaction": {
+        "title": "Interaction Features:",
+        "triggers": "Click, hover, and focus triggers",
+        "keyboard": "Keyboard navigation support",
+        "screenReader": "Screen reader accessibility",
+        "portal": "Portal rendering",
+        "focus": "Focus management"
+      }
+    }
+  }
+}

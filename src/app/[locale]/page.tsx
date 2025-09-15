@@ -11,10 +11,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { Layout, Palette, Layers } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  const t = useTranslations("Homepage");
+
   return (
     <PageLayout
       template="contained"
@@ -26,12 +29,10 @@ export default function Home() {
         {/* Hero Section */}
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Multiple Layout Templates
+            {t("title")}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Experience different layout templates for your Next.js blog. Choose
-            between minimal blank layouts or feature-rich contained layouts with
-            headers, footers, and sidebars.
+            {t("subtitle")}
           </p>
         </div>
 

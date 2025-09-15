@@ -1,16 +1,21 @@
-import Link from "next/link";
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
+import { LanguageSwitcher } from "./language-switcher";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const t = useTranslations("Common");
 
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "Landing", href: "/landing" },
-    { name: "Layouts", href: "/contained-demo" },
-    { name: "Floating UI", href: "/floating-ui-demo" },
+    { name: t("home"), href: "/" as const },
+    { name: t("landing"), href: "/landing" as const },
+    { name: t("layouts"), href: "/contained-demo" as const },
+    { name: t("floatingUI"), href: "/floating-ui-demo" as const },
   ];
 
   return (
@@ -31,6 +36,7 @@ export function Header() {
             {item.name}
           </Link>
         ))}
+        <LanguageSwitcher />
       </nav>
 
       {/* Mobile Menu Button */}
@@ -57,6 +63,9 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
+            <div className="pt-2 border-t">
+              <LanguageSwitcher />
+            </div>
           </nav>
         </div>
       )}
