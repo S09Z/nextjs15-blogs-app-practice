@@ -103,6 +103,7 @@ export function Tooltip({
           <div
             className={cn(
               "z-50 rounded-md bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md",
+              "bg-slate-900 text-white dark:bg-white dark:text-slate-900",
               "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
               className,
             )}
@@ -114,7 +115,7 @@ export function Tooltip({
             {showArrow && (
               <div
                 ref={arrowRef}
-                className="absolute h-2 w-2 rotate-45 bg-popover border border-border"
+                className="absolute h-2 w-2 rotate-45 bg-popover border border-border bg-slate-900 dark:bg-white"
                 style={{
                   left: arrowX != null ? `${arrowX}px` : "",
                   top: arrowY != null ? `${arrowY}px` : "",

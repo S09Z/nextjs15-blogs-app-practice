@@ -116,6 +116,7 @@ export function Popover({
             <div
               className={cn(
                 "z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none",
+                "bg-white border-gray-200 text-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100",
                 "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
                 className,
               )}
@@ -142,7 +143,7 @@ export function Popover({
               {showArrow && (
                 <div
                   ref={arrowRef}
-                  className="absolute h-2 w-2 rotate-45 bg-popover border border-border"
+                  className="absolute h-2 w-2 rotate-45 bg-popover border border-border bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700"
                   style={{
                     left: arrowX != null ? `${arrowX}px` : "",
                     top: arrowY != null ? `${arrowY}px` : "",

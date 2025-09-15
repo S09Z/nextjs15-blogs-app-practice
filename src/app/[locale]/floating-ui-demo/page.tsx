@@ -25,6 +25,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
+import { ExampleComponents } from "@/components/example-components";
 
 export default function FloatingUIDemo() {
   const dropdownItems = [
@@ -349,6 +350,22 @@ export default function FloatingUIDemo() {
                 </ul>
               </div>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Example Project Components */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Star className="h-5 w-5 text-orange-500" />
+              Example Project Components
+            </CardTitle>
+            <CardDescription>
+              Complete showcase of all Radix UI components with Tailwind CSS styling
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ExampleComponents />
           </CardContent>
         </Card>
 
