@@ -6,6 +6,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Override default black with custom dark gray
+        black: "#222324",
+        // Custom theme colors
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

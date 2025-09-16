@@ -9,7 +9,7 @@ interface PageLayoutConfig {
   header?: React.ReactNode;
   footer?: React.ReactNode;
   sidebar?: React.ReactNode;
-  maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "full";
+  maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "4xl" | "full";
   className?: string;
 }
 

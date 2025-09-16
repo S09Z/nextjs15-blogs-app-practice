@@ -53,6 +53,51 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Hide OS cursor globally */
+* {
+  cursor: none !important;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video,
+input, textarea, select, button {
+  cursor: none !important;
+}
+
+/* Ensure interactive elements also hide cursor */
+a, a:hover, a:focus, a:active, a:visited,
+button, button:hover, button:focus, button:active,
+input, input:hover, input:focus,
+textarea, textarea:hover, textarea:focus,
+select, select:hover, select:focus,
+[role="button"], [role="button"]:hover, [role="button"]:focus,
+[data-cursor], [data-cursor]:hover,
+/* Next.js Link components */
+a[href], a[href]:hover, a[href]:focus, a[href]:active,
+/* Any element that might show pointer cursor */
+[style*="cursor"], [class*="cursor"] {
+  cursor: none !important;
+}
+
+/* Override any CSS that might set cursor styles */
+*[style*="cursor: pointer"],
+*[style*="cursor:pointer"],
+.cursor-pointer,
+.hover\:cursor-pointer:hover {
+  cursor: none !important;
+}
+
 /* Dialog Animations - Simplified and Working */
 
 /* Overlay animations */
@@ -162,4 +207,17 @@ body {
 .mobile-menu-backdrop {
   backdrop-filter: blur(2px);
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* FINAL CURSOR OVERRIDE - Highest Specificity */
+html *, html *:hover, html *:focus, html *:active, html *:visited,
+body *, body *:hover, body *:focus, body *:active, body *:visited {
+  cursor: none !important;
+}
+
+/* Specific overrides for common cursor-setting classes */
+.cursor-auto, .cursor-default, .cursor-pointer, .cursor-wait,
+.cursor-text, .cursor-move, .cursor-help, .cursor-not-allowed,
+.hover\:cursor-pointer:hover, .hover\:cursor-auto:hover {
+  cursor: none !important;
 }

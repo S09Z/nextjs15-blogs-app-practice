@@ -11,6 +11,7 @@
     "learnMore": "Learn More",
     "viewDemo": "View Demo",
     "backToHome": "Back to Home",
+    "search": "Search...",
     "builtWith": "Built with ❤️ using Next.js, Floating UI, and Tailwind CSS"
   },
   "Homepage": {
@@ -210,6 +211,30 @@
         "portal": "Portal rendering",
         "focus": "Focus management"
       }
+    }
+  },
+  "Errors": {
+    "404": {
+      "title": "Page Not Found",
+      "description": "Sorry, the page you are looking for doesn't exist or has been moved.",
+      "goHome": "Go Home",
+      "goBack": "Go Back"
+    },
+    "500": {
+      "title": "Something went wrong!",
+      "description": "An unexpected error occurred. Please try again or contact support if the problem persists.",
+      "tryAgain": "Try Again",
+      "goHome": "Go Home",
+      "errorDetails": "Error Details (Development Only):",
+      "errorId": "Error ID"
+    },
+    "global": {
+      "title": "Critical Error",
+      "description": "A critical error occurred that prevented the application from loading properly.",
+      "tryAgain": "Try Again",
+      "reloadApp": "Reload Application",
+      "errorDetails": "Error Details (Development Only):",
+      "errorId": "Error ID"
     }
   }
 }

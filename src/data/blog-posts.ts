@@ -102,3 +102,26 @@ export function getBlogPostsByTag(tag: string): BlogPost[] {
     post.tags.some(postTag => postTag.toLowerCase() === tag.toLowerCase())
   );
 }
+
+export function getBlogPostsPaginated(page: number = 1, pageSize: number = 6): {
+  posts: BlogPost[];
+  totalPages: number;
+  currentPage: number;
+  hasNextPage: boolean;
+  hasPrevPage: boolean;
+} {
+  const sortedPosts = getBlogPosts();
+  const totalPosts = sortedPosts.length;
+  const totalPages = Math.ceil(totalPosts / pageSize);
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const posts = sortedPosts.slice(startIndex, endIndex);
+
+  return {
+    posts,
+    totalPages,
+    currentPage: page,
+    hasNextPage: page < totalPages,
+    hasPrevPage: page > 1,
+  };
+}

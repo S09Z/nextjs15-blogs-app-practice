@@ -5,7 +5,7 @@ interface ContainedLayoutTemplateProps extends LayoutProps {
   header?: React.ReactNode;
   footer?: React.ReactNode;
   sidebar?: React.ReactNode;
-  maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "full";
+  maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "4xl" | "full";
 }
 
 export function ContainedLayoutTemplate({
@@ -13,7 +13,7 @@ export function ContainedLayoutTemplate({
   header,
   footer,
   sidebar,
-  maxWidth = "2xl",
+  maxWidth = "4xl",
   className,
 }: ContainedLayoutTemplateProps) {
   const maxWidthClass = {
@@ -22,6 +22,7 @@ export function ContainedLayoutTemplate({
     lg: "max-w-lg",
     xl: "max-w-xl",
     "2xl": "max-w-2xl",
+    "4xl": "max-w-4xl",
     full: "max-w-full",
   }[maxWidth];
 
@@ -30,7 +31,7 @@ export function ContainedLayoutTemplate({
       {/* Header */}
       {header && (
         <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <div className={cn("container mx-auto px-4", maxWidthClass)}>
+          <div className={cn("mx-auto px-4", maxWidthClass)}>
             {header}
           </div>
         </header>

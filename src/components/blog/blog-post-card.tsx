@@ -47,7 +47,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
             {/* Title */}
             <h2 className="text-2xl font-bold leading-8 tracking-tight">
               <Link
-                href={`/blog/${post.slug}`}
+                href={{ pathname: "/blog/[slug]", params: { slug: post.slug } }}
                 className="text-gray-900 dark:text-gray-100 hover:text-primary transition-colors"
               >
                 {post.title}
@@ -59,10 +59,13 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
               {post.tags.map((tag) => (
                 <Link
                   key={tag}
-                  href={`/blog/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={{
+                    pathname: "/blog/tags/[tag]",
+                    params: { tag: tag.toLowerCase().replace(/\s+/g, "-") },
+                  }}
                   className="inline-block"
                 >
-                  <span className="text-sm font-medium text-primary hover:text-primary/80 uppercase tracking-wide transition-colors">
+                  <span className="px-3 py-1.5 text-sm font-bold bg-lime-400 text-black rounded-full border-2 border-black hover:bg-lime-300 transition-all duration-200 uppercase tracking-wide shadow-sm font-mono">
                     {tag}
                   </span>
                 </Link>
@@ -77,7 +80,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
             {/* Read more */}
             <div>
               <Link
-                href={`/blog/${post.slug}`}
+                href={{ pathname: "/blog/[slug]", params: { slug: post.slug } }}
                 className="text-primary hover:text-primary/80 font-medium transition-colors"
                 aria-label={`Read more about "${post.title}"`}
               >
