@@ -10,8 +10,7 @@
     "format": "biome format --write",
     "lint:fix": "next lint --fix",
     "type-check": "tsc --noEmit",
-    "clean": "pnpm dlx rimraf .next .turbo node_modules/.cache",
-    "postinstall": "pnpm dedupe"
+    "clean": "pnpm dlx rimraf .next .turbo node_modules/.cache"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
