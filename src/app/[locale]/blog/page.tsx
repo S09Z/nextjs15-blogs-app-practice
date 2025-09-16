@@ -22,12 +22,13 @@ export const metadata: Metadata = {
 };
 
 interface BlogPageProps {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }
 
-export default function BlogPage({ searchParams }: BlogPageProps) {
-  const page = Number(searchParams.page) || 1;
-  const { posts, totalPages, currentPage, hasNextPage, hasPrevPage } = getBlogPostsPaginated(page, 6);
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const page = Number(resolvedSearchParams.page) || 1;
+  const { posts, totalPages, currentPage, hasNextPage, hasPrevPage } = getBlogPostsPaginated(page, 3);
 
   return (
     <PageLayout

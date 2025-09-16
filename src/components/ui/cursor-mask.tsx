@@ -13,14 +13,25 @@ export function CursorMask() {
   useEffect(() => {
     // Force hide cursor on all elements
     const hideCursor = () => {
-      document.body.style.cursor = 'none';
-      document.documentElement.style.cursor = 'none';
+      document.body.style.cursor = 'none !important';
+      document.documentElement.style.cursor = 'none !important';
 
-      // Force hide on all elements
-      const allElements = document.querySelectorAll('*');
-      allElements.forEach((element) => {
-        (element as HTMLElement).style.cursor = 'none';
-      });
+      // Add global CSS rule to override all cursor styles
+      const style = document.createElement('style');
+      style.id = 'cursor-hide-global';
+      style.textContent = `
+        *, *:hover, *:focus, *:active {
+          cursor: none !important;
+        }
+      `;
+
+      // Remove existing style if present
+      const existingStyle = document.getElementById('cursor-hide-global');
+      if (existingStyle) {
+        existingStyle.remove();
+      }
+
+      document.head.appendChild(style);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -87,7 +98,7 @@ export function CursorMask() {
     // Trail animation
     const animateTrail = () => {
       trailRef.current = trailRef.current.map(point => ({
-        ...point,3
+        ...point,
         opacity: point.opacity * 0.9
       })).filter(point => point.opacity > 0.01);
 
@@ -103,6 +114,16 @@ export function CursorMask() {
       document.removeEventListener("mouseenter", handleMouseEnter);
       document.removeEventListener("mouseover", handleMouseOver);
       observer.disconnect();
+
+      // Remove global cursor hiding style
+      const existingStyle = document.getElementById('cursor-hide-global');
+      if (existingStyle) {
+        existingStyle.remove();
+      }
+
+      // Restore cursor
+      document.body.style.cursor = '';
+      document.documentElement.style.cursor = '';
     };
   }, []);
 
@@ -114,7 +135,7 @@ export function CursorMask() {
           key={index}
           className="fixed top-0 left-0 w-2 h-2 rounded-full bg-lime-400/30 pointer-events-none z-[9996]"
           style={{
-            transform: `translate(${point.x - 4}px, ${point.y - 4}px)`,
+            transform: `translate(${point.x}px, ${point.y}px) translate(-50%, -50%)`,
             opacity: point.opacity,
           }}
         />
@@ -125,8 +146,6 @@ export function CursorMask() {
         ref={cursorRef}
         className={`fixed top-0 left-0 rounded-full pointer-events-none z-[9999] transition-all duration-200 ease-out mix-blend-difference ${
           isVisible ? "opacity-100" : "opacity-0"
-        } ${
-          isClicking ? "scale-75" : isHovering ? "scale-150" : "scale-100"
         }`}
         style={{
           width: "24px",
@@ -135,7 +154,7 @@ export function CursorMask() {
             ? "radial-gradient(circle, rgba(190, 242, 100, 0.8) 0%, rgba(190, 242, 100, 0.4) 70%, transparent 100%)"
             : "rgb(190, 242, 100)",
           border: isHovering ? "2px solid rgba(34, 35, 36, 0.3)" : "2px solid black",
-          transform: `translate(${mousePosition.x - 12}px, ${mousePosition.y - 12}px)`,
+          transform: `translate(${mousePosition.x}px, ${mousePosition.y}px) translate(-50%, -50%) scale(${isClicking ? 0.75 : isHovering ? 1.5 : 1})`,
           transformOrigin: "center center",
           backdropFilter: isHovering ? "blur(2px)" : "none",
         }}
@@ -145,13 +164,11 @@ export function CursorMask() {
       <div
         className={`fixed top-0 left-0 rounded-full pointer-events-none z-[9998] transition-all duration-300 ease-out ${
           isVisible ? "opacity-100" : "opacity-0"
-        } ${
-          isHovering ? "scale-125" : "scale-100"
         }`}
         style={{
           width: "60px",
           height: "60px",
-          transform: `translate(${mousePosition.x - 30}px, ${mousePosition.y - 30}px)`,
+          transform: `translate(${mousePosition.x}px, ${mousePosition.y}px) translate(-50%, -50%)`,
           transformOrigin: "center center",
           background: `conic-gradient(from 0deg,
             rgba(190, 242, 100, 0.2) 0deg,
@@ -165,11 +182,9 @@ export function CursorMask() {
       />
 
       {/* Outer Glow */}
-      {/* <div
+      <div
         className={`fixed top-0 left-0 rounded-full pointer-events-none z-[9997] transition-all duration-700 ease-out ${
           isVisible ? "opacity-100" : "opacity-0"
-        } ${
-          isHovering ? "scale-110" : "scale-100"
         }`}
         style={{
           width: "200px",
@@ -179,19 +194,21 @@ export function CursorMask() {
           background: `radial-gradient(circle, transparent 60%, rgba(190, 242, 100, 0.03) 70%, transparent 100%)`,
           filter: "blur(2px)",
         }}
-      /> */}
+      />
 
       {/* Custom animations */}
-      <style jsx global>{`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
 
-        body {
-          overflow-x: hidden;
-        }
-      `}</style>
+          body {
+            overflow-x: hidden;
+          }
+        `
+      }} />
     </>
   );
 }

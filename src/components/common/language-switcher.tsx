@@ -2,6 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/routing";
+import { useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Dropdown } from "@/components/floating-ui";
 import { Languages } from "lucide-react";
@@ -15,6 +16,7 @@ export function LanguageSwitcher() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const params = useParams();
 
   const currentLanguage = languages.find((lang) => lang.code === locale);
 
@@ -23,7 +25,12 @@ export function LanguageSwitcher() {
     value: lang.code,
     onClick: () => {
       if (lang.code !== locale) {
-        router.push(pathname, { locale: lang.code });
+        // Handle dynamic routes that need params
+        if (pathname.includes('[') && params) {
+          router.push({ pathname, params } as any, { locale: lang.code });
+        } else {
+          router.push(pathname as any, { locale: lang.code });
+        }
       }
     },
   }));

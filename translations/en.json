@@ -213,6 +213,10 @@
       }
     }
   },
+  "Pagination": {
+    "previous": "Previous",
+    "next": "Next"
+  },
   "Errors": {
     "404": {
       "title": "Page Not Found",

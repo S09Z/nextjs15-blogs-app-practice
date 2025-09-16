@@ -3,13 +3,22 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
+
+type StaticPathname =
+  | "/"
+  | "/blog"
+  | "/landing"
+  | "/contained-demo"
+  | "/blank-demo"
+  | "/floating-ui-demo";
 
 interface BlogPaginationProps {
   currentPage: number;
   totalPages: number;
   hasNextPage: boolean;
   hasPrevPage: boolean;
-  basePath?: string;
+  basePath?: StaticPathname; // restrict to known static routes only
 }
 
 export function BlogPagination({
@@ -19,6 +28,7 @@ export function BlogPagination({
   hasPrevPage,
   basePath = "/blog"
 }: BlogPaginationProps) {
+  const t = useTranslations("Pagination");
   const generatePageNumbers = () => {
     const pages = [];
     const maxVisiblePages = 5;
@@ -70,7 +80,7 @@ export function BlogPagination({
     if (page === 1) {
       return basePath;
     }
-    return `${basePath}?page=${page}`;
+    return { pathname: basePath, query: { page } } as const;
   };
 
   if (totalPages <= 1) {
@@ -83,16 +93,16 @@ export function BlogPagination({
     <nav className="flex items-center justify-center space-x-2 py-8" aria-label="Pagination">
       {/* Previous Page Button */}
       {hasPrevPage ? (
-        <Button variant="outline" size="sm" asChild>
+        <Button variant="ghost" size="sm" asChild>
           <Link href={getPageUrl(currentPage - 1)} className="flex items-center gap-2">
             <ChevronLeft className="h-4 w-4" />
-            Previous
+            {t("previous")}
           </Link>
         </Button>
       ) : (
-        <Button variant="outline" size="sm" disabled className="flex items-center gap-2">
+        <Button variant="ghost" size="sm" disabled className="flex items-center gap-2">
           <ChevronLeft className="h-4 w-4" />
-          Previous
+          {t("previous")}
         </Button>
       )}
 
@@ -116,7 +126,7 @@ export function BlogPagination({
           return (
             <Button
               key={pageNum}
-              variant={isCurrentPage ? "default" : "outline"}
+              variant={isCurrentPage ? "outline" : "ghost" }
               size="sm"
               asChild={!isCurrentPage}
               disabled={isCurrentPage}
@@ -134,15 +144,15 @@ export function BlogPagination({
 
       {/* Next Page Button */}
       {hasNextPage ? (
-        <Button variant="outline" size="sm" asChild>
+        <Button variant="ghost" size="sm" asChild>
           <Link href={getPageUrl(currentPage + 1)} className="flex items-center gap-2">
-            Next
+            {t("next")}
             <ChevronRight className="h-4 w-4" />
           </Link>
         </Button>
       ) : (
-        <Button variant="outline" size="sm" disabled className="flex items-center gap-2">
-          Next
+        <Button variant="ghost" size="sm" disabled className="flex items-center gap-2">
+          {t("next")}
           <ChevronRight className="h-4 w-4" />
         </Button>
       )}

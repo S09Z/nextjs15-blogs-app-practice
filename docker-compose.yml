@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Development environment
+  nextjs-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        - NODE_ENV=development
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+      - nextjs-pnpm-store:/tmp/.pnpm-store
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 1G
+    profiles:
+      - dev
+
+  # Production environment
+  nextjs-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
+    profiles:
+      - prod
+
+volumes:
+  nextjs-pnpm-store:
+
+networks:
+  default:
+    name: nextjs-blog-network

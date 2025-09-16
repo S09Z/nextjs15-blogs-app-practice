@@ -1,0 +1,20 @@
+# Lightweight development Dockerfile that uses host node_modules
+FROM node:18-alpine
+
+# Install dependencies for development
+RUN apk add --no-cache libc6-compat
+
+WORKDIR /app
+
+# Enable pnpm
+RUN corepack enable pnpm
+
+# Expose the port
+EXPOSE 3000
+
+# Set environment variables
+ENV NODE_ENV=development
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Install dependencies on container start if not present
+CMD ["sh", "-c", "[ ! -d node_modules ] && pnpm install || true; pnpm run dev"]

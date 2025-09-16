@@ -5,6 +5,8 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   /* config options here */
+  output: 'standalone',
+  outputFileTracingRoot: __dirname,
   experimental: {
     optimizePackageImports: ["@radix-ui/react-icons", "lucide-react"],
   },
